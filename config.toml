@@ -1,0 +1,80 @@
+key = "123"
+host = "http://localhost:4000/"
+port = "8080"
+timer = "1h"
+
+[[metrics]]
+key = "time_first_byte"
+help = "First Byte in ms."
+data = [
+    "median.firstView.TTFB",
+    "median.repeatView.TTFB"
+]
+
+[[metrics]]
+key = "time_load_time"
+help = "Load time in ms."
+data = [
+    "median.firstView.loadTime",
+    "median.repeatView.loadTime"
+]
+
+[[metrics]]
+key = "time_start_render_ms"
+help = "Start render time."
+data = [
+    "median.firstView.render",
+    "median.repeatView.render"
+]
+
+[[metrics]]
+key = "time_frist_interactive_ms"
+help = "Time to First Interactive time ms."
+data = [
+    "median.firstView.FirstInteractive",
+    "median.repeatView.FirstInteractive"
+]
+
+[[metrics]]
+key = "speed_index_no"
+help = "Speed Index"
+data = [
+    "median.firstView.SpeedIndex",
+    "median.repeatView.SpeedIndex"
+]
+
+[[metrics]]
+help = "Visually Complete"
+key = "time_visually_complete_ms"
+data = [
+    "median.firstView.visualComplete",
+    "median.repeatView.visualComplete"
+]
+
+[[metrics]]
+help = "Page Size"
+key = "page_size_bytes"
+data = [
+    "median.firstView.bytesInDoc",
+    "median.repeatView.bytesInDoc"
+]
+
+[[metrics]]
+help = "Page Size"
+key = "page_requests_no"
+data = [
+    "median.firstView.requestsDoc",
+    "median.repeatView.requestsDoc"
+]
+
+
+[[sites]]
+name = "vitra home"
+url = "https://www.bbc.co.uk"
+location = "Test.LAN"
+
+[[sites]]
+name = "vitra new"
+url = "http://spiegel.de"
+location = "Test.LAN"
+

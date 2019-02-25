@@ -1,0 +1,18 @@
+version: '3'
+services:
+  server:
+    image: webpagetest/server:release
+    volumes:
+      - ./docker/locations.ini:/var/www/html/settings/locations.ini:ro
+    ports:
+      - 4000:80
+  agent:
+    image: webpagetest/agent:release
+    network_mode: "host"
+    volumes:
+      - ./docker/entrypoint.sh:/entrypoint.sh
+    entrypoint:
+      - /entrypoint.sh
+    environment:
+      - SERVER_URL=http://localhost:4000/work/
+      - LOCATION=Test
