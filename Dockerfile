@@ -17,5 +17,5 @@ RUN mkdir app
 WORKDIR app
 
 COPY --from=buildImage /go/src/github.com/steffenmllr/prometheus-webpagetest-exporter/build exporter
-
+EXPOSE 3030
 ENTRYPOINT [ "/app/exporter" ]

@@ -8,10 +8,10 @@
 ```toml
 # the Key from your local or remote webpagetest instance
 key = "123"
-# the URL to your webpagetest instance
-host = "http://localhost:4000/"
+# the URL to your webpagetest instance, if you run locally (and on a mac, use your real ip)
+host = "http://127.0.0.1:4000"
 # the Port where the service is running and the metrics are exposed
-port = "8080"
+port = "3030"
 # How often do you want to run the test
 timer = "1h"
 
@@ -38,12 +38,12 @@ url = "https://www.bbc.co.uk"
 location = "Test.LAN"
 ```
 
-3. Run the docker container
+3. Run the docker container (run with to access the local instance)
 ```
-docker run -v $(pwd)/config.toml:/config.toml -it -p 8080:8080 steffenmllr/prometheus-webpagetest-exporter /config.toml
+docker run -v $(pwd)/config.toml:/config.toml -it -p 3030:3030 steffenmllr/prometheus-webpagetest-exporter /config.toml
 ```
 
-4. Check the output at [https://localhost:4040](https://localhost:4040)
+4. Check the output at [https://localhost:3030](https://localhost:3030)
 
 5. Add to Prometheus to scrape
 

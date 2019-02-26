@@ -1,3 +1,6 @@
+package exporter
+
+const Html = `
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,3 +49,4 @@
     </main>
   </body>
 </html>
+`

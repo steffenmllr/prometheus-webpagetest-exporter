@@ -20,7 +20,7 @@ type TestRun struct {
 }
 
 func (lq *ListQueue) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./exporter/index.html"))
+	tmpl, _ := template.New("out").Parse(Html)
 	var testRuns []TestRun
 	for e := lq.container.Front(); e != nil; e = e.Next() {
 		testRuns = append(testRuns, e.Value.(TestRun))

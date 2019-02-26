@@ -1,6 +1,6 @@
 key = "123"
-host = "http://localhost:4000/"
-port = "8080"
+host = "http://localhost:4000"
+port = "3030"
 timer = "1h"
 
 [[metrics]]
