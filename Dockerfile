@@ -16,6 +16,8 @@ FROM alpine:latest
 RUN mkdir app
 WORKDIR app
 
+RUN apk --no-cache add ca-certificates
+
 COPY --from=buildImage /go/src/github.com/steffenmllr/prometheus-webpagetest-exporter/build exporter
 EXPOSE 3030
 ENTRYPOINT [ "/app/exporter" ]
