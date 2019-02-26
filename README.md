@@ -2,8 +2,8 @@
 > A runner that periodically tests a url with [webpagetest.org](https://www.webpagetest.org) and exposes those values to [prometheus.io](https://prometheus.io)
 
 ## Gettings Started
-1. Get a Key from (webpagetest.org)[https://www.webpagetest.org/getkey.php] or clone this repo and do a `docker-compose up -d`
-2. Create a config and check out the [sample-config.toml](./sample.toml):
+1. Get a Key from [webpagetest.org](https://www.webpagetest.org/getkey.php) or clone this repo and do a `docker-compose up -d`
+2. Create a config and check out the [sample-config.toml](./config.toml):
 
 ```toml
 # the Key from your local or remote webpagetest instance
@@ -19,10 +19,12 @@ timer = "1h"
 # Check out the
 [[metrics]]
 # Prometheus key export
-key = "time_first_byte"
+key = "time_to_first_byte_ms"
 # Prometheus help
 help = "First Byte in ms."
+
 # The Data from the reponse that gets collected, the array index is set as run
+# Find the Reponse here: https://www.webpagetest.org/jsonResult.php?testid=190120_HQ_e97dbb371e61dd8fcf46c4feda8ddaec
 data = [
     "median.firstView.TTFB",
     "median.repeatView.TTFB"
@@ -37,7 +39,9 @@ location = "Test.LAN"
 ```
 
 3. Run the docker container
-`docker run -v $(pwd)/config.toml:/config.toml -it -p 8080:8080 steffenmllr/prometheus-webpagetest-exporter /config.toml`
+```
+docker run -v $(pwd)/config.toml:/config.toml -it -p 8080:8080 steffenmllr/prometheus-webpagetest-exporter /config.toml
+```
 
 4. Check the output at [https://localhost:4040](https://localhost:4040)
 
@@ -53,7 +57,7 @@ page_requests_no{location="Test",run="2",url="https://www.bbc.co.uk"} 7
 
 # HELP page_size_bytes Page Size
 # TYPE page_size_bytes gauge
-page_size_bytes{location="Test",run="1",url="https://www.bbc.co.uk"} 1.260213e+06
+page_size_bytes{location="Test",run="1",url="https://www.bbc.co.uk"} 49001
 page_size_bytes{location="Test",run="2",url="https://www.bbc.co.uk"} 112527
 
 # HELP speed_index_no Speed Index
