@@ -77,6 +77,7 @@ func main() {
 				URL:      site.Url,
 				Location: site.Location,
 				Runs:     1,
+				APIKey:   config.Key,
 			}, queue.UpdateStatus)
 
 			if err != nil {
